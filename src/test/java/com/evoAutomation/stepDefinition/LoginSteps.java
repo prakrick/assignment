@@ -18,7 +18,7 @@ public class LoginSteps{
 //		    loginPage.login();
 //		});
 //	}
-
+	
 	@Given("^user login$")
 	public void login(){
 		loginPage.login();

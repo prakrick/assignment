@@ -15,7 +15,7 @@ public class LoginPage {
 	}
 	
 	public void login(){
-		driver.get("http://google.co.in/");
+		System.out.println("In Login");
 	}
 }
 

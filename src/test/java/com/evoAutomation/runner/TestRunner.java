@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = {"src/test/resources/features/"},
 		tags="@test",
-		glue={"com.evoAutomation.stepDefinition"})
+		glue={"com.evoAutomation"})
 
 public class TestRunner {
 
