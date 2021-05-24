@@ -29,7 +29,7 @@ public class CategoryHeaderPage {
 
 	public void mouseHoverOnCategory(String categoryName) {
 		String categoryHeaderXpath = "//span[contains(text(), '"+categoryName+"')]";
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(categoryHeaderXpath)));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(categoryHeaderXpath)));
 		seleniumWrappers.moveToElement(By.xpath(categoryHeaderXpath));
 	}
 	

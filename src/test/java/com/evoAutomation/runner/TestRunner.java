@@ -9,7 +9,9 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = {"src/test/resources/features/"},
 		tags="@test",
-		glue={"com.evoAutomation"})
+		glue={"com.evoAutomation"},
+		plugin = { "pretty", "html:target/cucumber-reports" },
+		monochrome = true)
 
 public class TestRunner {
 

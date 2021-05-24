@@ -1,9 +1,5 @@
 package com.evoAutomation.utils;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -11,33 +7,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.evoAutomation.hooks.Hooks;
-
-import io.cucumber.plugin.ConcurrentEventListener;
-
 public class BrowserLib {
 
 	WebDriver driver = null;
-//	Properties configData = null;
 	
-	private static Logger logger = LoggerFactory.getLogger(Hooks.class);
+	private static Logger logger = LoggerFactory.getLogger(BrowserLib.class);
 	
 	public BrowserLib(){
 		System.out.println("inside browser");
 		this.setupDriver();
 	}
-	
-//	public void readPropertiesFile(){
-//		try {
-//			FileReader reader = new FileReader("src/test/resources/config.properties");
-//			this.configData = new Properties();
-//			this.configData.load(reader);
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
+
 	
 	public void setupDriver(){
 		System.out.println(ConfigReader.configData);

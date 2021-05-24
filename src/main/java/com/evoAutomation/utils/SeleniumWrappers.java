@@ -1,6 +1,7 @@
 package com.evoAutomation.utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -47,6 +48,17 @@ public class SeleniumWrappers {
 	public void clearAndSendKeys(WebElement element, String textToEnter) {
 		element.clear();
 		element.sendKeys(textToEnter);
-		
+	}
+	
+	public void enterTextUsingJsExecutorById(String id, String textToEnter) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
+		//set the text
+		jsExecutor.executeScript("document.getElementById('"+id+"').value='"+textToEnter+"'");
+		System.out.println("sdssds");
+	}
+
+	public void clickUsingJsExecutor(WebElement element) {
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].click();", element);	
 	}
 }

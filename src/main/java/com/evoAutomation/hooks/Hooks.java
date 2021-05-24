@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.evoAutomation.utils.ConfigReader;
+import com.evoAutomation.utils.JsonReader;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -14,16 +15,19 @@ public class Hooks {
 	private static Logger logger = LoggerFactory.getLogger(Hooks.class);
 
 	ConfigReader configReader;
+	JsonReader jsonReader;
 	
-	public Hooks(ConfigReader configReader) {
+	public Hooks(ConfigReader configReader,JsonReader jsonReader) {
 		System.out.println("in hooks constructor");
 		this.configReader = configReader;
+		this.jsonReader = jsonReader;
 	}
 	
 	@Before
 	public void beforeScenario(Scenario scenario) {
 		logger.info("-------------------Sceanrio Started------------------ ::->"+scenario.getName());
 		configReader.readPropertiesFile();
+		jsonReader.parseUserDetails();
 	}
 	
 	@After

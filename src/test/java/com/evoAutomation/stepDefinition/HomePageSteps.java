@@ -27,5 +27,15 @@ public class HomePageSteps{
 	public void user_clicks_on_category(String categoryName) {
 	    this.homePage.clickOnCategory(categoryName);
 	}
+	
+	@And("User clicks on Flipkart home icon")
+	public void user_clicks_on_flipkart_home_icon() {
+	    homePage.clickFlipkartHomeIcon();
+	}
+	
+	@And("User clicks on Cart")
+	public void user_clicks_on_cart() {
+		homePage.clickOnCart();
+	}
 
 }
