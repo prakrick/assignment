@@ -1,7 +1,6 @@
 package com.evoAutomation.stepDefinition;
 
 import com.evoAutomation.pages.CategoryHeaderPage;
-import com.evoAutomation.pages.LoginPage;
 
 import io.cucumber.java.en.Given;
 

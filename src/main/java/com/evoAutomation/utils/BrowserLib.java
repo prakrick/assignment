@@ -13,25 +13,17 @@ public class BrowserLib {
 	
 	private static Logger logger = LoggerFactory.getLogger(BrowserLib.class);
 	
-	public BrowserLib(){
-		System.out.println("inside browser");
-		this.setupDriver();
-	}
-
-	
 	public void setupDriver(){
-		System.out.println(ConfigReader.configData);
 		String browser = ConfigReader.configData.getProperty("browser").toLowerCase();
 		System.out.println(browser);
 		switch (browser) {
 		case "chrome":
-			System.out.println("In case block");
 			System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 			driver = new ChromeDriver();
 			break;
 
 		default:
-			logger.info("Browser implement not available for ::->"+browser);
+			logger.info("Browser implementation is not available for ::->"+browser);
 			break;
 		}
 		driver.manage().window().maximize();

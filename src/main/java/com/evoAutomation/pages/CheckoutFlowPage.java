@@ -16,9 +16,9 @@ public class CheckoutFlowPage {
 
 	SeleniumWrappers seleniumWrappers;
 	Utility utility;
+	WaitHelper waitHelper;
 	
 	private final WebDriver driver;
-	private final WaitHelper waitHelper;
 	
 	@FindBy(css="._2IX_2-._17N0em")
 	private WebElement emailAddressTxtBox;
@@ -38,15 +38,21 @@ public class CheckoutFlowPage {
 	@FindBy(id="to-payment")
 	private WebElement orderSummaryContinueBtn;
 	
-	@FindBy(id="#NET_OPTIONS")
+//	@FindBy(id="NET_OPTIONS")
+	@FindBy(xpath="//label[@for='NET_OPTIONS']")
 	private WebElement netBankingOptnBtn;
 	
 	@FindBy(xpath="//button[contains(text(), 'PAY')]")
 	private WebElement payButton;
 	
+	@FindBy(xpath="//select[@class='_1kwp-i']")
+	private WebElement bankListDDL;
+	
+	@FindBy(css="input[title='Login']")
+	private WebElement netBankingloginButton;
+	
 	public CheckoutFlowPage(BrowserLib browserLib, SeleniumWrappers seleniumWrappers, 
 			Utility utility,WaitHelper waitHelper){
-		System.out.println("inside home page");
 		this.driver = browserLib.getDriver();
 		this.seleniumWrappers = seleniumWrappers;
 		PageFactory.initElements(driver, this);
@@ -65,13 +71,14 @@ public class CheckoutFlowPage {
 	}
 	
 	public void selectPopularBank(String bankName){
-		String popularBankNameCSS = "input[id='"+bankName+"']";
-		seleniumWrappers.getElement(By.cssSelector(popularBankNameCSS)).click();
+		String popularBankNameXpath = "//label[@for='"+bankName+"']";
+		seleniumWrappers.clickUsingJsExecutor(seleniumWrappers.getElement(By.xpath(popularBankNameXpath)));
 	}
 	
 	public void clickPayButton(){
 		waitHelper.waitForElementToBeClickable(payButton);
 		payButton.click();
+		waitHelper.waitForVisibilityOfElement(netBankingloginButton, 10);
 	}
 
 	public void loginOnCheckoutPage(String userType) {
@@ -85,12 +92,21 @@ public class CheckoutFlowPage {
 
 	public void clickContinueButtonOrderSummary() {
 		orderSummaryContinueBtn.click();
-		waitHelper.waitForElementToBeClickable(netBankingOptnBtn);
 	}
 
 	public void clickOnNetBankingPaymentOption() {
-		netBankingOptnBtn.click();
+		try{
+		waitHelper.waitForElementToBeClickable(netBankingOptnBtn, 15);
+		seleniumWrappers.clickUsingJsExecutor(netBankingOptnBtn);
 		waitHelper.waitForVisibilityOfElement(payButton);	
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void selectBankFromBankList(String bankName) {
+		seleniumWrappers.selectDropdownByValue(bankListDDL, bankName);
 	}
 }
 

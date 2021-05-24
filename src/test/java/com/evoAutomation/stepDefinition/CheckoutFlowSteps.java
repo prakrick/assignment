@@ -35,7 +35,7 @@ public class CheckoutFlowSteps{
 	
 	@When("User clicks Continue button on order summary")
 	public void user_clicks_continue_button_order_summary() {
-	    checkoutFlowPage.clickContinueButtonOrderSummary();
+		checkoutFlowPage.clickContinueButtonOrderSummary();
 	}
 	
 	@And("User selects net banking as payment option")
@@ -43,9 +43,9 @@ public class CheckoutFlowSteps{
 	    checkoutFlowPage.clickOnNetBankingPaymentOption();
 	}
 	
-	@And("User selects {string} from Popular Banks")
-	public void user_selects_from_popular_banks(String bankName) {
-	    checkoutFlowPage.selectPopularBank(bankName);
+	@And("User selects {string} from Bank list")
+	public void user_selects_from_bank_list(String bankName) {
+	    checkoutFlowPage.selectBankFromBankList(bankName);
 	}
 	
 	@When("User clicks on PAY button")

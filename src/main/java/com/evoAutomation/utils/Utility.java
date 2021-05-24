@@ -5,7 +5,7 @@ import java.util.*;
 public class Utility {
 	
 	private Map<String,List<String>> getEnvironmentMap(){
-		String env = ConfigReader.configData.getProperty("executionEnv");
+		String env = ConfigReader.configData.getProperty("executionEnv").toUpperCase();
 		if(JsonReader.userDetailsMap.containsKey(env)){
 			return JsonReader.userDetailsMap.get(env);
 		}else{

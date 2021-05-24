@@ -12,32 +12,32 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.evoAutomation.utils.BrowserLib;
 import com.evoAutomation.utils.ConfigReader;
 import com.evoAutomation.utils.SeleniumWrappers;
+import com.evoAutomation.utils.WaitHelper;
 
 public class CategoryHeaderPage {
 
 	SeleniumWrappers seleniumWrappers;
+	WaitHelper waitHelper;
 	
-	private final WebDriver driver;
-	private final WebDriverWait wait;
+	@FindBy(className="_24OVr")
+	private WebElement previousCursor;
 	
-	public CategoryHeaderPage(BrowserLib browserLib, SeleniumWrappers seleniumWrappers){
+	public CategoryHeaderPage(SeleniumWrappers seleniumWrappers, WaitHelper waitHelper){
 		System.out.println("inside category page");
-		this.driver = browserLib.getDriver();
 		this.seleniumWrappers = seleniumWrappers;
-		this.wait = new WebDriverWait(this.driver, 10);
+		this.waitHelper = waitHelper;
 	}
 
 	public void mouseHoverOnCategory(String categoryName) {
 		String categoryHeaderXpath = "//span[contains(text(), '"+categoryName+"')]";
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(categoryHeaderXpath)));
+		waitHelper.waitForVisibilityOfElement(previousCursor, 10);
+		waitHelper.waitForElementToBeClickableByLocator(By.xpath(categoryHeaderXpath),5);
 		seleniumWrappers.moveToElement(By.xpath(categoryHeaderXpath));
 	}
 	
 	public void clicksOnListItem(String listItem) {
 	    String categoryListItem = "//a[@title='"+listItem+"']";
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(categoryListItem)));
-	    seleniumWrappers.getElement(By.xpath(categoryListItem)).click();
-	    
+	    waitHelper.waitForVisibilityOfElementByLocator(By.xpath(categoryListItem)).click(); 
 	}
 	
 }

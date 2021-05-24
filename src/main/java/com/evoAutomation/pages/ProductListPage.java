@@ -12,21 +12,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.evoAutomation.utils.BrowserLib;
 import com.evoAutomation.utils.ConfigReader;
 import com.evoAutomation.utils.SeleniumWrappers;
+import com.evoAutomation.utils.WaitHelper;
 
 import io.cucumber.java.en.And;
 
 public class ProductListPage {
 
 	SeleniumWrappers seleniumWrappers;
+	WaitHelper waitHelper;
 	
-	private final WebDriver driver;
-	private final WebDriverWait wait;
 	
-	public ProductListPage(BrowserLib browserLib, SeleniumWrappers seleniumWrappers){
-		System.out.println("inside home page");
-		this.driver = browserLib.getDriver();
+	public ProductListPage(BrowserLib browserLib, SeleniumWrappers seleniumWrappers,WaitHelper waitHelper){
 		this.seleniumWrappers = seleniumWrappers;
-		this.wait = new WebDriverWait(this.driver, 15);
+		this.waitHelper = waitHelper;
 	}
 
 	public void clickOnProductWithName(String productDisplayName) {

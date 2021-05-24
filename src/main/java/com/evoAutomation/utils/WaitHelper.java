@@ -49,6 +49,7 @@ public class WaitHelper {
 			webDriverWait = getWebDriverWaitForGivenTime(timeInSeconds);
 			return webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
 		}catch(Exception e){
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -58,6 +59,17 @@ public class WaitHelper {
 			webDriverWait = getWebDriverWaitForGivenTime(timeInSeconds);
 			return webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
 		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public WebElement waitForElementToBeClickableByLocator(By locator, Integer... timeInSeconds){
+		try{
+			webDriverWait = getWebDriverWaitForGivenTime(timeInSeconds);
+			return webDriverWait.until(ExpectedConditions.elementToBeClickable(locator));
+		}catch(Exception e){
+			e.printStackTrace();
 			return null;
 		}
 	}

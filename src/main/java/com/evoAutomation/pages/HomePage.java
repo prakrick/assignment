@@ -16,9 +16,9 @@ import com.evoAutomation.utils.WaitHelper;
 public class HomePage {
 
 	SeleniumWrappers seleniumWrappers;
+	WaitHelper waitHelper;
 	
 	private final WebDriver driver;
-	private final WaitHelper waitHelper;
 	
 	//static locator strings
 	private final String closeLoginModalCSS = "._2KpZ6l._2doB4z";
@@ -51,8 +51,9 @@ public class HomePage {
 	}
 
 	public void closeLoginModal() {
-		waitHelper.waitForVisibilityOfElementByLocator(By.cssSelector(closeLoginModalCSS));
-		closeLoginModal.click();
+		if(waitHelper.checkForVisibilityOfElementByLocator(By.cssSelector(closeLoginModalCSS),2)){
+			closeLoginModal.click();
+		}
 	}
 	
 	public void clickOnCategory(String categoryName) {
@@ -62,6 +63,7 @@ public class HomePage {
 
 	public void clickFlipkartHomeIcon() {
 		flipkartHomeIcon.click();
+		closeLoginModal();
 		waitHelper.waitForVisibilityOfElement(headerSection);
 	}
 

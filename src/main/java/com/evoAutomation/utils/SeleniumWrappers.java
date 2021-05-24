@@ -2,9 +2,11 @@ package com.evoAutomation.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,5 +62,19 @@ public class SeleniumWrappers {
 	public void clickUsingJsExecutor(WebElement element) {
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", element);	
+	}
+
+	public void sendKeyboardEvent(WebElement element, Keys key, Integer... numberOfTimes) {
+		 int numOfKeyEvents = numberOfTimes.length>=0 ? numberOfTimes[0] : 1;
+		 int i =0;
+		 do{
+			 element.sendKeys(key);
+			 i++;
+		 }while(i<numOfKeyEvents);
+	}
+	
+	public void selectDropdownByValue(WebElement dropdownElement, String value){
+		Select ddlElement = new Select(dropdownElement);
+		ddlElement.selectByValue(value);
 	}
 }
