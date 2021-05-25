@@ -1,14 +1,8 @@
 package com.evoAutomation.stepDefinition;
 
 import org.junit.Assert;
-
-import com.evoAutomation.pages.HomePage;
-import com.evoAutomation.pages.OppoMobileStorePage;
 import com.evoAutomation.pages.ProductDescriptionPage;
-import com.evoAutomation.pages.ProductListPage;
-
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 

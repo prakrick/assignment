@@ -10,12 +10,11 @@ import org.slf4j.LoggerFactory;
 public class BrowserLib {
 
 	WebDriver driver = null;
-	
+
 	private static Logger logger = LoggerFactory.getLogger(BrowserLib.class);
-	
+
 	public void setupDriver(){
 		String browser = ConfigReader.configData.getProperty("browser").toLowerCase();
-		System.out.println(browser);
 		switch (browser) {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -29,7 +28,7 @@ public class BrowserLib {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
-	
+
 	public WebDriver getDriver(){
 		return this.driver;
 	}

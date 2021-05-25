@@ -5,18 +5,18 @@
     "password": "evotest@01"
   },
   "Plus": {
-    "username": "prkshgpta01@gmail.com",
-    "password": "evotest@01"
+    "username": "dummy@gmail.com",
+    "password": "dummy@01"
   }
  },
  "TEST":{
   "RegularTest": {
-    "username": "prkshgpta01@gmail.com",
-    "password": "evotest@01"
+    "username": "dummy@gmail.com",
+    "password": "dummy@01"
   },
   "PlusTest": {
-    "username": "prkshgpta01@gmail.com",
-    "password": "evotest@01"
+    "username": "dummy@gmail.com",
+    "password": "dummy@01"
   }
  }
 }

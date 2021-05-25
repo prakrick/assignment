@@ -16,30 +16,29 @@ import com.evoAutomation.hooks.Hooks;
 public class SeleniumWrappers {
 
 	private static Logger logger = LoggerFactory.getLogger(Hooks.class);
-	
+
 	private final WebDriver driver;
-	
+
 	public SeleniumWrappers(BrowserLib browserLib){
-		System.out.println("inside home page");
 		this.driver = browserLib.getDriver();
-	
+
 	}
-	
-	
+
+
 	public WebElement getElement(By by)
 	{
 		WebElement element = null;
 		try{
 			element = driver.findElement(by);
 			logger.debug("Found Element " + element.toString());
-			}
+		}
 		catch(Exception e){
 			logger.info("Could not find element ::=>"+by);
 			e.printStackTrace();
 		}
 		return element;
 	}
-	
+
 	public void moveToElement(By by){
 		WebElement el = getElement(by);
 		Actions hover = new Actions(driver);
@@ -51,12 +50,11 @@ public class SeleniumWrappers {
 		element.clear();
 		element.sendKeys(textToEnter);
 	}
-	
+
 	public void enterTextUsingJsExecutorById(String id, String textToEnter) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
 		//set the text
 		jsExecutor.executeScript("document.getElementById('"+id+"').value='"+textToEnter+"'");
-		System.out.println("sdssds");
 	}
 
 	public void clickUsingJsExecutor(WebElement element) {
@@ -65,14 +63,14 @@ public class SeleniumWrappers {
 	}
 
 	public void sendKeyboardEvent(WebElement element, Keys key, Integer... numberOfTimes) {
-		 int numOfKeyEvents = numberOfTimes.length>=0 ? numberOfTimes[0] : 1;
-		 int i =0;
-		 do{
-			 element.sendKeys(key);
-			 i++;
-		 }while(i<numOfKeyEvents);
+		int numOfKeyEvents = numberOfTimes.length>=0 ? numberOfTimes[0] : 1;
+		int i =0;
+		do{
+			element.sendKeys(key);
+			i++;
+		}while(i<numOfKeyEvents);
 	}
-	
+
 	public void selectDropdownByValue(WebElement dropdownElement, String value){
 		Select ddlElement = new Select(dropdownElement);
 		ddlElement.selectByValue(value);

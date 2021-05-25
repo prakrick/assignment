@@ -22,14 +22,13 @@ public class Hooks {
 	JsonReader jsonReader;
 	BrowserLib browserLib;
 	WebDriver driver;
-	
+
 	public Hooks(ConfigReader configReader,JsonReader jsonReader,BrowserLib browserLib) {
-		System.out.println("in hooks constructor");
 		this.configReader = configReader;
 		this.jsonReader = jsonReader;
 		this.browserLib = browserLib;
-		}
-	
+	}
+
 	@Before
 	public void beforeScenario(Scenario scenario) {
 		logger.info("-------------------Sceanrio Started------------------ ::->"+scenario.getName());
@@ -37,13 +36,13 @@ public class Hooks {
 		jsonReader.parseUserDetails();
 		browserLib.setupDriver();
 	}
-	
+
 	@After
 	public void afterScenario(Scenario scenario) {
 		logger.info("-------------------Sceanrio Completed------------------ ::->"+scenario.getName());
 		driver = browserLib.getDriver();
 		scenario.attach(((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES), "image/png", scenario.getName());
-	    driver.close();
-	    driver.quit();
+		driver.close();
+		driver.quit();
 	}
 }

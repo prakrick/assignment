@@ -6,17 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.evoAutomation.utils.*;
-
 public class WaitHelper {
 
 	private final WebDriver driver;
 	private WebDriverWait webDriverWait;
-	
+
 	public WaitHelper(BrowserLib browserLib) {
 		this.driver = browserLib.getDriver();
 	}
-	
+
 	public Boolean checkForVisibilityOfElement(WebElement element, Integer... timeInSeconds){
 		try{
 			webDriverWait = getWebDriverWaitForGivenTime(timeInSeconds);
@@ -25,7 +23,7 @@ public class WaitHelper {
 			return false;
 		}
 	}
-	
+
 	public Boolean checkForVisibilityOfElementByLocator(By locator, Integer... timeInSeconds){
 		try{
 			webDriverWait = getWebDriverWaitForGivenTime(timeInSeconds);
@@ -34,7 +32,7 @@ public class WaitHelper {
 			return false;
 		}
 	}
-	
+
 	public WebElement waitForVisibilityOfElementByLocator(By locator, Integer... timeInSeconds){
 		try{
 			webDriverWait = getWebDriverWaitForGivenTime(timeInSeconds);
@@ -43,7 +41,7 @@ public class WaitHelper {
 			return null;
 		}
 	}
-	
+
 	public WebElement waitForVisibilityOfElement(WebElement webElement, Integer... timeInSeconds){
 		try{
 			webDriverWait = getWebDriverWaitForGivenTime(timeInSeconds);
@@ -53,7 +51,7 @@ public class WaitHelper {
 			return null;
 		}
 	}
-	
+
 	public WebElement waitForElementToBeClickable(WebElement webElement, Integer... timeInSeconds){
 		try{
 			webDriverWait = getWebDriverWaitForGivenTime(timeInSeconds);
@@ -63,7 +61,7 @@ public class WaitHelper {
 			return null;
 		}
 	}
-	
+
 	public WebElement waitForElementToBeClickableByLocator(By locator, Integer... timeInSeconds){
 		try{
 			webDriverWait = getWebDriverWaitForGivenTime(timeInSeconds);
@@ -73,7 +71,7 @@ public class WaitHelper {
 			return null;
 		}
 	}
-	
+
 	public WebDriverWait getWebDriverWaitForGivenTime(Integer[] timeInSeconds){
 		Integer waitTimeInSeconds = timeInSeconds.length>0 ? timeInSeconds[0] : Integer.parseInt(ConfigReader.configData.getProperty("WAIT_TIME"));
 		return new WebDriverWait(this.driver, waitTimeInSeconds); 

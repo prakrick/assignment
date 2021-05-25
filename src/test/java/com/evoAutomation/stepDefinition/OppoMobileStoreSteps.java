@@ -1,10 +1,7 @@
 package com.evoAutomation.stepDefinition;
 
-import com.evoAutomation.pages.HomePage;
 import com.evoAutomation.pages.OppoMobileStorePage;
-
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 
 
 public class OppoMobileStoreSteps{
