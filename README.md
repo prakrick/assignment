@@ -26,6 +26,8 @@ This is an test automation framework that can be used to automate and execute yo
 >The automation framework currently has 1 test case automated which has been annoted with tag "@regresesion"
 - Go to ```src/test/java/com/evoAutoamtion/runner/TestRunner.java ```
 - Right click on the TestRunner.java file and select Run As>Junit Test
+OR
+- Right click on the project folder in eclipse and Go to _Run As>Maven Test_
 The test case execution should start now. 
 Upon completion, you can find the automation report generated inside the _target_ folder in project root directory
 ```report name: cucumber-reports.html```
