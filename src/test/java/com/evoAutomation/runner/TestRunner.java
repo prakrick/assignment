@@ -7,9 +7,12 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+		dryRun = false,
 		features = {"src/test/resources/features/"},
-		tags="@test",
-		glue={"com.evoAutomation.stepDefinition"})
+		tags="@regression",
+		glue={"com.evoAutomation"},
+		plugin = { "pretty", "html:target/cucumber-reports.html" },
+		monochrome = true)
 
 public class TestRunner {
 

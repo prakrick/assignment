@@ -1,0 +1,22 @@
+{
+"PROD":{
+  "Regular": {
+    "username": "prkshgpta01@gmail.com",
+    "password": "evotest@01"
+  },
+  "Plus": {
+    "username": "dummy@gmail.com",
+    "password": "dummy@01"
+  }
+ },
+ "TEST":{
+  "RegularTest": {
+    "username": "dummy@gmail.com",
+    "password": "dummy@01"
+  },
+  "PlusTest": {
+    "username": "dummy@gmail.com",
+    "password": "dummy@01"
+  }
+ }
+}
